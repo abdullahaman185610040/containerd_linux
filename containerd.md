@@ -37,31 +37,96 @@ sudo systemctl status containerd
 
 Anda akan melihat status `active (running)` jika Containerd sudah berjalan dengan baik.
 
-## Penggunaan Containerd
+Berikut adalah contoh file Markdown yang berisi panduan menjalankan container dengan Containerd dan cara mengerjakan tugas di dalamnya. Anda dapat menyalin teks ini ke dalam file `.md` di GitHub atau dokumen lainnya.
 
-### 1. Menarik (Pull) Image
+---
 
-Anda bisa menggunakan `ctr`, CLI dari Containerd, untuk menarik image dari Docker Hub atau registry lainnya. Sebagai contoh, untuk menarik image `alpine`:
+# Panduan Menjalankan Container dan Mengerjakan Tugas dengan Containerd
+
+## 1. Menarik (Pull) Image
+
+Langkah pertama adalah menarik (download) image dari Docker Hub atau registry lainnya. Misalnya, kita akan menggunakan image `alpine`, distribusi Linux yang ringan:
 
 ```bash
 sudo ctr image pull docker.io/library/alpine:latest
 ```
 
-### 2. Menjalankan Container
+Perintah ini akan mengunduh image `alpine` versi terbaru (`latest`) ke sistem Anda.
 
-Setelah image berhasil diunduh, Anda bisa menjalankan container menggunakan perintah berikut:
+## 2. Menjalankan Container
+
+Setelah image berhasil diunduh, jalankan container menggunakan perintah berikut:
 
 ```bash
 sudo ctr run -t --rm docker.io/library/alpine:latest mycontainer /bin/sh
 ```
 
-- **Penjelasan**:
-  - `run`: Perintah untuk menjalankan container.
-  - `-t`: Opsi untuk membuka terminal interaktif di dalam container.
-  - `--rm`: Menghapus container setelah berhenti.
-  - `docker.io/library/alpine:latest`: Image yang digunakan.
-  - `mycontainer`: Nama unik untuk container.
-  - `/bin/sh`: Perintah yang dijalankan di dalam container (shell).
+### Penjelasan:
+- `ctr run`: Perintah untuk menjalankan container.
+- `-t`: Membuka terminal interaktif di dalam container.
+- `--rm`: Menghapus container setelah selesai dijalankan.
+- `docker.io/library/alpine:latest`: Image yang digunakan untuk membuat container.
+- `mycontainer`: Nama unik untuk container yang Anda jalankan.
+- `/bin/sh`: Shell yang akan dijalankan di dalam container.
+
+## 3. Mengerjakan Tugas di Dalam Container
+
+Setelah menjalankan perintah di atas, Anda akan masuk ke dalam container dan dapat menjalankan berbagai perintah di dalamnya.
+
+### Contoh 1: Membuat File dan Direktori di Dalam Container
+
+Setelah masuk ke dalam container, Anda dapat membuat direktori dan file:
+
+```sh
+mkdir /mydir
+echo "Hello from Containerd" > /mydir/myfile.txt
+cat /mydir/myfile.txt
+```
+
+Perintah ini akan membuat direktori `mydir`, menulis teks ke file `myfile.txt`, dan kemudian menampilkan konten file tersebut.
+
+### Contoh 2: Memasang Paket (Jika Perlu)
+
+Jika Anda memerlukan paket tambahan di dalam container, Anda bisa menginstalnya menggunakan `apk`, package manager yang digunakan oleh `alpine`:
+
+```sh
+apk update
+apk add curl
+```
+
+Perintah ini akan menginstal `curl` di dalam container, yang dapat digunakan untuk berbagai operasi jaringan.
+
+## 4. Keluar dari Container
+
+Setelah selesai mengerjakan tugas di dalam container, Anda bisa keluar dari shell dan menghentikan container dengan mengetik `exit`:
+
+```sh
+exit
+```
+
+Karena kita menggunakan opsi `--rm` saat menjalankan container, container ini akan secara otomatis dihapus setelah Anda keluar.
+
+## 5. Memverifikasi Penghapusan Container
+
+Jika Anda ingin memastikan bahwa container telah dihapus setelah selesai, Anda bisa memeriksa daftar container yang berjalan:
+
+```bash
+sudo ctr container list
+```
+
+Jika container telah dihapus, Anda tidak akan melihatnya dalam daftar.
+
+## 6. Menjalankan Ulang Tugas dengan Container Baru
+
+Jika Anda perlu menjalankan tugas yang sama atau berbeda dalam container baru, cukup ulangi langkah-langkah di atas dengan menarik image yang sesuai dan menjalankan container baru.
+
+## Kesimpulan
+
+Dengan mengikuti langkah-langkah di atas, Anda dapat dengan mudah menjalankan container menggunakan Containerd, mengerjakan tugas di dalamnya, dan menghapus container setelah selesai. Proses ini sangat berguna untuk pengujian, pengembangan, atau menjalankan aplikasi dalam lingkungan yang terisolasi.
+
+---
+
+## 4, Mengelola Container
 
 ### 3. Mengelola Container
 
@@ -101,7 +166,7 @@ Untuk menghapus image yang tidak lagi diperlukan:
 sudo ctr image remove docker.io/library/alpine:latest
 ```
 
-### 4. Menggunakan Pods
+## 4. Menggunakan Pods
 
 Selain menjalankan container individual, Containerd juga mendukung penggunaan pods.
 
