@@ -122,7 +122,7 @@ Jika container telah dihapus, Anda tidak akan melihatnya dalam daftar.
 Selain menjalankan container individual, Containerd juga mendukung penggunaan pods.
 
 ```bash
-sudo ctr run --rm --net-host docker.io/library/alpine:latest mypod -- sh -c "echo Hello from Containerd"
+sudo ctr run --rm --net-host docker.io/library/alpine:latest mypod sh -c "echo Hello from Containerd"
 ```
 
 ## Kesimpulan
