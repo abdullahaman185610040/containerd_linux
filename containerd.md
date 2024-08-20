@@ -116,70 +116,13 @@ sudo ctr container list
 
 Jika container telah dihapus, Anda tidak akan melihatnya dalam daftar.
 
-## 6. Menjalankan Ulang Tugas dengan Container Baru
 
-Jika Anda perlu menjalankan tugas yang sama atau berbeda dalam container baru, cukup ulangi langkah-langkah di atas dengan menarik image yang sesuai dan menjalankan container baru.
-
-## Kesimpulan
-
-Dengan mengikuti langkah-langkah di atas, Anda dapat dengan mudah menjalankan container menggunakan Containerd, mengerjakan tugas di dalamnya, dan menghapus container setelah selesai. Proses ini sangat berguna untuk pengujian, pengembangan, atau menjalankan aplikasi dalam lingkungan yang terisolasi.
-
----
-
-## 4, Mengelola Container
-
-### 3. Mengelola Container
-
-#### a. Melihat Daftar Image yang Diunduh
-
-```bash
-sudo ctr image list
-```
-
-#### b. Melihat Daftar Container yang Berjalan
-
-```bash
-sudo ctr container list
-```
-
-#### c. Menghentikan Container
-
-Untuk menghentikan container yang sedang berjalan:
-
-```bash
-sudo ctr task kill mycontainer
-```
-
-#### d. Menghapus Container
-
-Jika Anda ingin menghapus container:
-
-```bash
-sudo ctr container delete mycontainer
-```
-
-#### e. Menghapus Image
-
-Untuk menghapus image yang tidak lagi diperlukan:
-
-```bash
-sudo ctr image remove docker.io/library/alpine:latest
-```
-
-## 4. Menggunakan Pods
+## 6. Menggunakan Pods
 
 Selain menjalankan container individual, Containerd juga mendukung penggunaan pods.
 
 ```bash
 sudo ctr run --rm --net-host docker.io/library/alpine:latest mypod -- sh -c "echo Hello from Containerd"
-```
-
-### 5. Melihat Log Container
-
-Anda bisa melihat log dari container dengan perintah:
-
-```bash
-sudo ctr task logs mycontainer
 ```
 
 ## Kesimpulan
