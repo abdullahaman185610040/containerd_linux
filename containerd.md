@@ -38,8 +38,6 @@ sudo systemctl status containerd
 
 Anda akan melihat status `active (running)` jika Containerd sudah berjalan dengan baik.
 
-Berikut adalah contoh file Markdown yang berisi panduan menjalankan container dengan Containerd dan cara mengerjakan tugas di dalamnya. Anda dapat menyalin teks ini ke dalam file `.md` di GitHub atau dokumen lainnya.
-
 ---
 
 # Panduan Menjalankan Container dan Mengerjakan Tugas dengan Containerd
@@ -53,6 +51,8 @@ sudo ctr image pull docker.io/library/alpine:latest
 ```
 
 Perintah ini akan mengunduh image `alpine` versi terbaru (`latest`) ke sistem Anda.
+![image containerd](ctr_pic/image2_containerd.png)
+![image container](ctr_pic/image2_containerd.png)
 
 ## 2. Menjalankan Container
 
@@ -61,7 +61,9 @@ Setelah image berhasil diunduh, jalankan container menggunakan perintah berikut:
 ```bash
 sudo ctr run -t --rm docker.io/library/alpine:latest mycontainer /bin/sh
 ```
-
+![run containerd](ctr_pic/run2_containerd.png)
+![run container](ctr_pic/run2_containerd.png)
+![run container](ctr_pic/run_containerd.png)
 ### Penjelasan:
 - `ctr run`: Perintah untuk menjalankan container.
 - `-t`: Membuka terminal interaktif di dalam container.
@@ -83,6 +85,7 @@ mkdir /mydir
 echo "Hello from Containerd" > /mydir/myfile.txt
 cat /mydir/myfile.txt
 ```
+![create container](ctr_pic/create_containerd.png)
 
 Perintah ini akan membuat direktori `mydir`, menulis teks ke file `myfile.txt`, dan kemudian menampilkan konten file tersebut.
 
@@ -94,6 +97,7 @@ Jika Anda memerlukan paket tambahan di dalam container, Anda bisa menginstalnya 
 apk update
 apk add curl
 ```
+![create container](ctr_pic/create2_containerd.png)
 
 Perintah ini akan menginstal `curl` di dalam container, yang dapat digunakan untuk berbagai operasi jaringan.
 
@@ -114,6 +118,7 @@ Jika Anda ingin memastikan bahwa container telah dihapus setelah selesai, Anda b
 ```bash
 sudo ctr container list
 ```
+![list container](ctr_pic/list_containerd.png)
 
 Jika container telah dihapus, Anda tidak akan melihatnya dalam daftar.
 
@@ -125,6 +130,7 @@ Selain menjalankan container individual, Containerd juga mendukung penggunaan po
 ```bash
 sudo ctr run --rm --net-host docker.io/library/alpine:latest mypod sh -c "echo Hello from Containerd"
 ```
+![pod container](ctr_pic/pod_containerd.png)
 
 ## Kesimpulan
 
