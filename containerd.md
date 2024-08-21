@@ -26,6 +26,7 @@ Instal Containerd menggunakan perintah berikut:
 ```bash
 sudo apt-get install -y containerd
 ```
+![Persiapan sistem](containerd/Cuplikan layar dari 2024-08-20 13-06-44.png)
 
 ### 3. Verifikasi Instalasi
 
