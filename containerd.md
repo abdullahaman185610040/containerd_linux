@@ -97,7 +97,7 @@ Jika Anda memerlukan paket tambahan di dalam container, Anda bisa menginstalnya 
 apk update
 apk add curl
 ```
-![create container](ctr_pic/create2_containerd.png)
+![create container](ctr_pic/curl_containrd.png)
 
 Perintah ini akan menginstal `curl` di dalam container, yang dapat digunakan untuk berbagai operasi jaringan.
 
